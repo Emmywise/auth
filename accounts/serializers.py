@@ -3,22 +3,11 @@ from .models import *
 from django.contrib import auth
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
-# from django.contrib.auth.models import CustomUser
-''' use just the commented userSerializer for normal user creation. new class used to try token out '''
-
-class UserSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = User
-        # fields = '__all__'
-        fields = ('id', 'username', 'email')
-
 
 class RegisterSerializer(serializers.ModelSerializer):
   
     class Meta:
         model = User
-        # fields = '__all__'
         fields = ('id', 'username', 'email', 'password')
         extra_kwargs = {'password': {'write_only':True}}
 
@@ -28,8 +17,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         return attrs
 
     def create(self, validated_data, *args):
-        # user = User.object.create_user(validated_data['username'], validated_data['email'], validated_data['password'])
-        # user = CustomUser.objects.create_user(validated_data['email'], validated_data['password'])
         user = User.objects.create_user(**validated_data)
         return user
 
@@ -88,18 +75,3 @@ class LogoutSerializer(serializers.Serializer):
         except TokenError:
 
             self.fail('bad token')
-
-
-# class UserSerializer(serializers.ModelSerializer):
-
-#     class Meta:
-#         model = CustomUser
-#         fields = '__all__'
-
-
-# class adminLoginForm(forms.Form):
-#     email = forms.EmailField()
-#     password = forms.CharField(widget=forms.PasswordInput())
-#     class Meta:
-#         model = CustomUser
-#         field =('email', 'password', )
