@@ -44,8 +44,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('verification/', include('verify_email.urls')),
-    path('api/user-accounts/', RegisterView.as_view()),
-    path('api/user-login/', LoginAPIView.as_view()),
-    path('api/user-logout/', LogoutAPIView.as_view()),
+    path('api/user-accounts/', RegisterView.as_view(), name='register'),
+    path('api/user-login/', LoginAPIView.as_view(), name='login'),
+    path('api/user-logout/', LogoutAPIView.as_view(), name='logout'),
     path('api/email-verify', verifyEmail.as_view(), name='email-verify'),
 ]
