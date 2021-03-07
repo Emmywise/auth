@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_auth',
     'rest_framework.authtoken',
     'rest_framework_simplejwt.token_blacklist',
+	'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+	'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'radar.urls'
@@ -76,6 +78,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'radar.wsgi.application'
+
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Database
@@ -138,9 +143,9 @@ REST_FRAMEWORK = {
     ]
 }
 
-
+# email credietials configurations
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'valid email address'
-EMAIL_HOST_PASSWORD = 'valid email password'
+EMAIL_HOST_USER = 'adefila.emmywise@gmail.com'
+EMAIL_HOST_PASSWORD = '080744441351'
 EMAIL_PORT = 587

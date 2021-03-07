@@ -32,7 +32,6 @@ class LoginSerializer(serializers.ModelSerializer):
     password=serializers.CharField(max_length=68, min_length=6, write_only=True)
     username=serializers.CharField(max_length=255, min_length=3, read_only=True)
     tokens=serializers.CharField(max_length=68, min_length=6, read_only=True)
-
     
     class Meta:
         model = User
@@ -41,8 +40,6 @@ class LoginSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         email = attrs.get('email', '')
         password = attrs.get('password', '')
-
-
         user = auth.authenticate(email=email, password=password)
         if not user:
             raise AuthenticationFailed('invalid credientials')
@@ -50,11 +47,11 @@ class LoginSerializer(serializers.ModelSerializer):
             raise AuthenticationFailed('account disabled, contact admin')
         if not user.is_verified:
             raise AuthenticationFailed('email not verified')
-        
         return {
             'email': user.email,
             'username': user.username,
-            'tokens':user.tokens
+            'tokens':user.tokens,
+			'access_token':user.access_token
         }
         return super().validate(attrs)
 
@@ -68,10 +65,7 @@ class LogoutSerializer(serializers.Serializer):
         return attrs
 
     def save(self, **kwargs):
-
         try:
             RefreshToken(self.token).blacklist()
-        
         except TokenError:
-
             self.fail('bad token')
