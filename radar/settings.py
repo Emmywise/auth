@@ -146,6 +146,6 @@ REST_FRAMEWORK = {
 # email credietials configurations
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'adefila.emmywise@gmail.com'
-EMAIL_HOST_PASSWORD = '080744441351'
+EMAIL_HOST_USER = 'a valid email'
+EMAIL_HOST_PASSWORD = 'the email password'
 EMAIL_PORT = 587
