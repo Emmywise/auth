@@ -47,6 +47,6 @@ choose to use the test folder instead of the inbuilt test.py file so as to easil
 
 
 ### SOME OTHER USEFUL FEATURES
-this API can have endpoints for forget password, 
-the API can have a login using other accounts like google and facebook accounts
-the API can have a two-factor authentication
+* this API can have endpoints for forget password, 
+* the API can have a login using other accounts like google and facebook accounts
+* the API can have a two-factor authentication
