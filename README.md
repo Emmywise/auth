@@ -15,11 +15,11 @@ pip install -r requirements.txt (Python 2),
 pip3 install -r requirements.txt (Python 3)
 
 ### Configure Email Credentials in settings.py file
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'a valid email'
-EMAIL_HOST_PASSWORD = 'the email password'
-EMAIL_PORT = 587
+* EMAIL_USE_TLS = True
+* EMAIL_HOST = 'smtp.gmail.com'
+* EMAIL_HOST_USER = 'a valid email'
+* EMAIL_HOST_PASSWORD = 'the email password'
+* EMAIL_PORT = 587
 
 ### migrate the database, run the following command in the command prompt
 py manage.py makemigrations
